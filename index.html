@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Milky Way - Game</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="game-header">
+    <a class="back-link" href="./intro.html">Intro</a>
+
+    <img class="game-logo Logo" src="./logo videogioco.png" alt="The Milky Way Logo">
+
+    <div class="stats" aria-label="Statistiche di gioco">
+      <span>Monete <strong id="coins">0</strong></span>
+      <span>Livello <strong id="level">1</strong>/100</span>
+      <span>Vite <strong id="lives">3</strong></span>
+      <span>Punti <strong id="score">0</strong></span>
+    </div>
+  </header>
+
+  <main class="game-layout">
+    <section class="game-panel" aria-label="Area di gioco">
+      <canvas id="game" width="960" height="560"></canvas>
+      <div class="mobile-controls" aria-label="Comandi touch">
+        <button id="moveLeft" type="button">Sinistra</button>
+        <button id="shootButton" type="button">Spara</button>
+        <button id="moveRight" type="button">Destra</button>
+      </div>
+    </section>
+
+    <aside class="shop" aria-label="Negozio proiettili">
+      <h2>Armeria</h2>
+      <p class="shop-note">Raccogli stelle e compra proiettili piu forti.</p>
+      <button class="shop-item active" data-weapon="basic" type="button">
+        Laser base <span class="weapon-price">gratis</span>
+      </button>
+      <button class="shop-item" data-weapon="plasma" type="button">
+        Plasma <span class="weapon-price">120 monete</span>
+      </button>
+      <button class="shop-item" data-weapon="nova" type="button">
+        Nova <span class="weapon-price">320 monete</span>
+      </button>
+      <button class="shop-item" data-weapon="comet" type="button">
+        Cometa <span class="weapon-price">1000 monete</span>
+      </button>
+      <button class="shop-item" data-weapon="nebula" type="button">
+        Nebula <span class="weapon-price">2500 monete</span>
+      </button>
+      <button class="shop-item" data-weapon="supernova" type="button">
+        Supernova <span class="weapon-price">5000 monete</span>
+      </button>
+      <button class="shop-item" data-weapon="tonCannon" type="button">
+        Cannone TON <span class="weapon-price">10000 monete</span>
+      </button>
+      <button id="shipShopToggle" class="shop-toggle" type="button">Cambia astronave</button>
+      <div class="ship-shop hidden" id="shipShop">
+        <h3>Seleziona astronave</h3>
+        <button class="ship-option" data-ship="scout" type="button">
+          Scout <span>gratis</span>
+        </button>
+        <button class="ship-option" data-ship="interceptor" type="button">
+          Interceptor <span>2500 monete</span>
+        </button>
+        <button class="ship-option" data-ship="titan" type="button">
+          Titan <span>3500 monete</span>
+        </button>
+        <button class="ship-option" data-ship="falcon" type="button">
+          Falcon <span>5000 monete</span>
+        </button>
+        <button class="ship-option" data-ship="destroyer" type="button">
+          Destroyer <span>7000 monete</span>
+        </button>
+        <p id="shipInfo" class="shop-note">Seleziona o acquista un'astronave per cambiare velocità e stile.</p>
+      </div>
+      <p id="message" class="message">Frecce o A/D per muoverti. Spazio per sparare.</p>
+    </aside>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

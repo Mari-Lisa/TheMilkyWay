@@ -1,0 +1,246 @@
+@font-face {
+  font-family: "Milk Mango";
+  src: url("Milk Mango.ttf") format("truetype");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 18px;
+  color: #10213d;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.75), transparent 18%),
+    radial-gradient(circle at 20% 12%, rgba(102, 226, 255, 0.55), transparent 30%),
+    radial-gradient(circle at 78% 18%, rgba(255, 140, 218, 0.48), transparent 28%),
+    radial-gradient(circle at 50% 84%, rgba(255, 241, 138, 0.36), transparent 30%),
+    linear-gradient(135deg, #dff8ff 0%, #c7d9ff 42%, #e8d4ff 100%);
+  font-family: "Milk Mango", "Comic Sans MS", cursive;
+}
+
+.game-header {
+  width: min(1180px, 100%);
+  min-height: 150px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 4px;
+}
+
+.game-logo {
+  width: clamp(170px, 24vw, 240px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(36, 62, 120, 0.3));
+}
+
+.intro-link {
+  color: #10213d;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.55);
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.intro-link:hover {
+  color: #7a2ee8;
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats span,
+.shop,
+.mobile-controls button {
+  border: 1px solid rgba(40, 116, 190, 0.25);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 22px rgba(82, 220, 255, 0.12), 0 10px 28px rgba(40, 68, 130, 0.12);
+}
+
+.stats span {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.68rem;
+}
+
+.stats strong {
+  color: #72338A;
+}
+
+.game-layout {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 16px;
+  align-items: start;
+}
+
+.game-panel {
+  min-width: 0;
+}
+
+#game {
+  width: 100%;
+  aspect-ratio: 12 / 7;
+  display: block;
+  border: 2px solid rgba(75, 151, 232, 0.58);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #03040d 0%, #130d32 52%, #050612 100%);
+  box-shadow: 0 22px 70px rgba(49, 75, 142, 0.2), 0 0 34px rgba(84, 226, 255, 0.22);
+}
+
+.mobile-controls {
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.mobile-controls button,
+.shop-item {
+  min-height: 46px;
+  border-radius: 8px;
+  color: #10213d;
+  font: inherit;
+  font-size: 0.62rem;
+  cursor: pointer;
+}
+
+.shop {
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.shop h2 {
+  margin: 0 0 12px;
+  color: #72338A;
+  font-size: 0.9rem;
+}
+
+.shop-note,
+.message {
+  margin: 0 0 14px;
+  color: rgba(16, 33, 61, 0.72);
+  font-size: 0.58rem;
+  line-height: 1.8;
+}
+
+.shop-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid rgba(40, 116, 190, 0.22);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.shop-item span {
+  color: #1b7bc4;
+  font-size: 0.5rem;
+  text-align: right;
+}
+
+.shop-item.active {
+  color: #071021;
+  background: linear-gradient(135deg, #fff06a, #ff69c9 54%, #80f7ff);
+}
+
+.shop-item.active span {
+  color: #071021;
+}
+
+.shop-toggle,
+.ship-option {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(40, 116, 190, 0.22);
+  background: rgba(255, 255, 255, 0.62);
+  color: #10213d;
+  font: inherit;
+  font-size: 0.62rem;
+  cursor: pointer;
+}
+
+.ship-shop {
+  padding: 12px;
+  border: 1px solid rgba(40, 116, 190, 0.22);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.ship-shop.hidden {
+  display: none;
+}
+
+.ship-option.active {
+  color: #071021;
+  background: linear-gradient(135deg, #fff06a, #ff69c9 54%, #80f7ff);
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 12px;
+  }
+
+  .game-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .game-logo {
+    width: 150px;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-controls {
+    display: grid;
+  }
+}

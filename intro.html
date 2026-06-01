@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Milky Way - Intro</title>
+  <style>
+    @font-face {
+      font-family: "Milk Mango";
+      src: url("Milk Mango.ttf") format("truetype");
+      font-display: swap;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; min-height: 100%; background: #dff8ff; color: #10213d; font-family: "Milk Mango", "Comic Sans MS", cursive; }
+    body {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.75), transparent 18%),
+        radial-gradient(circle at 20% 12%, rgba(102, 226, 255, 0.55), transparent 30%),
+        radial-gradient(circle at 78% 18%, rgba(255, 140, 218, 0.48), transparent 28%),
+        radial-gradient(circle at 50% 84%, rgba(255, 241, 138, 0.36), transparent 30%),
+        linear-gradient(135deg, #dff8ff 0%, #c7d9ff 42%, #e8d4ff 100%);
+    }
+    .intro-shell { position: relative; width: min(100vw, 960px); max-width: 100%; }
+    .intro-card {
+      position: relative;
+      width: 100%;
+      min-height: min(620px, calc(100vh - 40px));
+      border: 2px solid rgba(75, 151, 232, 0.58);
+      border-radius: 16px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 22% 22%, rgba(102, 226, 255, 0.46), transparent 26%),
+        radial-gradient(circle at 76% 28%, rgba(255, 140, 218, 0.42), transparent 26%),
+        radial-gradient(circle at 50% 82%, rgba(255, 241, 138, 0.3), transparent 30%),
+        linear-gradient(180deg, #eafcff 0%, #c7d9ff 52%, #ecd8ff 100%);
+      box-shadow: 0 22px 70px rgba(49, 75, 142, 0.2), 0 0 34px rgba(84, 226, 255, 0.22);
+    }
+    .intro-card::before,
+    .intro-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(83, 71, 180, 0.55) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(20, 123, 196, 0.48) 1px, transparent 1.5px);
+      background-size: 92px 92px, 144px 144px;
+      background-position: 0 0, 42px 60px;
+      animation: starFall 12s linear infinite;
+      opacity: 0.45;
+    }
+    .intro-card::after {
+      transform: scale(1.4);
+      animation-duration: 7s;
+      opacity: 0.22;
+    }
+    .intro-card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.12);
+      padding: 32px 20px;
+      text-align: center;
+      z-index: 2;
+    }
+    .logo-link {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+    }
+    .game-logo {
+      width: clamp(170px, 24vw, 240px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(36, 62, 120, 0.3));
+    }
+    .intro-card-overlay p { margin: 8px 0 0; line-height: 1.45; }
+    .play-button{ display: inline-block; margin-top:18px; opacity:1; padding: 12px 22px; background: rgb(178, 119, 255); color: #000; text-decoration: none; font-weight: bold; border-radius: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease; box-shadow: 0 0 0 rgba(178, 119, 255, 0); }
+    .play-button:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(178, 119, 255, 0.35); background-color: rgb(215, 167, 255); }
+    .play-button:active { transform: scale(0.98); }
+    #typewriter {
+      width: 100%;
+      max-width: 760px;
+      text-align: center;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+    .cursor { display: inline-block; animation: blink 0.8s steps(1) infinite; }
+    #subtitle, #detail { visibility: hidden; }
+    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    @keyframes starFall {
+      from { background-position: 0 0, 42px 60px; }
+      to { background-position: 0 92px, 42px 204px; }
+    }
+    @media (max-width: 620px) {
+      .logo-link { top: 14px; left: 14px; }
+      .game-logo { width: 150px; }
+      .intro-card-overlay { padding-top: 118px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-shell">
+    <div class="intro-card">
+      <a class="logo-link" href="intro.html" aria-label="The Milky Way">
+        <img class="game-logo" src="logo videogioco.png" alt="The Milky Way">
+      </a>
+      <div class="intro-card-overlay">
+        <div id="typewriter"><span id="typeText"></span><span class="cursor" id="titleCursor">|</span></div>
+        <p id="subtitle"><span id="subtitleText"></span><span class="cursor" id="subtitleCursor">|</span></p>
+            <p id="detail"><span id="detailText"></span><span class="cursor" id="detailCursor">|</span></p>
+        <a class="play-button" href="index.html">Gioca</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const titleText = "The Milky Way";
+    const subtitleText = "Immergiti nel gioco e scopri l'universo!";
+    const detailText = "Sconfiggi tutti i nemici e completa tutte le missioni.";
+    const titleEl = document.getElementById("typeText");
+    const subtitleEl = document.getElementById("subtitleText");
+    const detailEl = document.getElementById("detailText");
+    const titleCursor = document.getElementById("titleCursor");
+    const subtitleCursor = document.getElementById("subtitleCursor");
+    const detailCursor = document.getElementById("detailCursor");
+    const subtitleLine = document.getElementById("subtitle");
+    const detailLine = document.getElementById("detail");
+    const playButton = document.querySelector(".play-button");
+    let titleIndex = 0;
+    let subtitleIndex = 0;
+    let detailIndex = 0;
+
+    function hideCursor(cursor) {
+      cursor.style.display = "none";
+    }
+
+    function typeTitle() {
+      if (titleIndex < titleText.length) {
+        titleEl.textContent += titleText.charAt(titleIndex);
+        titleIndex++;
+        setTimeout(typeTitle, 100);
+      } else {
+        setTimeout(() => hideCursor(titleCursor), 1000);
+        setTimeout(typeSubtitle, 300);
+      }
+    }
+
+    function typeSubtitle() {
+      subtitleLine.style.visibility = "visible";
+      if (subtitleIndex < subtitleText.length) {
+        subtitleEl.textContent += subtitleText.charAt(subtitleIndex);
+        subtitleIndex++;
+        setTimeout(typeSubtitle, 70);
+      } else {
+        setTimeout(() => hideCursor(subtitleCursor), 1000);
+        setTimeout(typeDetail, 300);
+      }
+    }
+
+    function typeDetail() {
+      detailLine.style.visibility = "visible";
+      if (detailIndex < detailText.length) {
+        detailEl.textContent += detailText.charAt(detailIndex);
+        detailIndex++;
+        setTimeout(typeDetail, 70);
+      } else {
+        playButton.classList.add("show");
+        setTimeout(() => hideCursor(detailCursor), 5000);
+      }
+    }
+
+    typeTitle();
+  </script>
+</body>
+</html>
