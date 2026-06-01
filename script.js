@@ -1052,3 +1052,18 @@ if (ctx && canvas) {
 } else {
   console.error("Impossibile avviare il gioco: canvas o contesto grafico non trovati.");
 }
+
+
+
+window.addEventListener('touchmove', function(event) {
+    if (event.touches.length > 0) {
+        var touchX = event.touches[0].clientX;
+  
+        var mouseEvent = new MouseEvent('mousemove', {
+            clientX: touchX,
+            clientY: event.touches[0].clientY
+        });
+        window.dispatchEvent(mouseEvent);
+    }
+}, { passive: true });
+
